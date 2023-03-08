@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>订单列表 - Powered By SHOP++</title>
+<meta name="author" content="SHOP++ Team" />
+<meta name="copyright" content="SHOP++" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+.moreTable th {
+	width: 80px;
+	line-height: 25px;
+	padding: 5px 10px 5px 0px;
+	text-align: right;
+	font-weight: normal;
+	color: #333333;
+	background-color: #f8fbff;
+}
+
+.moreTable td {
+	line-height: 25px;
+	padding: 5px;
+	color: #666666;
+}
+</style>
+<script type="text/javascript">
+function Submit(){
+	document.getElementById('listForm').submit();
+}
+
+
+$().ready(function() {
+
+	var $listForm = $("#listForm");
+	var $filterMenu = $("#filterMenu");
+	var $filterMenuItem = $("#filterMenu li");
+	var $moreButton = $("#moreButton");
+	var $print = $("#listTable select[name='print']");
+	
+	
+	// 筛选菜单
+	$filterMenu.hover(
+		function() {
+			$(this).children("ul").show();
+		}, function() {
+			$(this).children("ul").hide();
+		}
+	);
+	
+	// 筛选
+	$filterMenuItem.click(function() {
+		var $this = $(this);
+		var $dest = $("#" + $this.attr("name"));
+		if ($this.hasClass("checked")) {
+			$dest.val("");
+		} else {
+			$dest.val($this.attr("val"));
+		}
+		$listForm.submit();
+	});
+	
+	// 更多选项
+	$moreButton.click(function() {
+		$.dialog({
+			title: "更多选项",
+			content: 
+'<table id="moreTable" class="moreTable"> <tr> <th> 类型: <\/th> <td> <select name="type"> <option value="">请选择...<\/option> <option value="general">普通订单<\/option> <option value="exchange">兑换订单<\/option> <\/select> <\/td> <\/tr> <tr> <th> 状态: <\/th> <td> <select name="status"> <option value="">请选择...<\/option> <option value="pendingPayment">等待付款<\/option> <option value="pendingReview">等待审核<\/option> <option value="pendingShipment">等待发货<\/option> <option value="shipped">已发货<\/option> <option value="received">已收货<\/option> <option value="completed">已完成<\/option> <option value="failed">已失败<\/option> <option value="canceled">已取消<\/option> <option value="denied">已拒绝<\/option> <\/select> <\/td> <\/tr> <tr> <th> 会员: <\/th> <td> <input type="text" name="memberUsername" class="text" value="" maxlength="200" \/> <\/td> <\/tr> <\/table>'			,
+			width: 470,
+			modal: true,
+			ok: "确 定",
+			cancel: "取 消",
+			onOk: function() {
+				$("#moreTable :input").each(function() {
+					var $this = $(this);
+					$("#" + $this.attr("name")).val($this.val());
+				});
+				$listForm.submit();
+			}
+		});
+	});
+	
+	// 打印选择
+	$print.change(function() {
+		var $this = $(this);
+		if ($this.val() != "") {
+			window.open($this.val());
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+	<div class="breadcrumb">
+		<a href="  ">首页</a> &raquo; 订单列表 <span>(共-----条记录)</span>
+	</div>
+	<form id="listForm" action="" method="get">
+		<input type="hidden" id="type" name="type" value="" />
+		<input type="hidden" id="status" name="status" value="" />
+		<input type="hidden" id="memberUsername" name="memberUsername" value="" />
+		<input type="hidden" id="isPendingReceive" name="isPendingReceive" value="" />
+		<input type="hidden" id="isPendingRefunds" name="isPendingRefunds" value="" />
+		<input type="hidden" id="isAllocatedStock" name="isAllocatedStock" value="" />
+		<input type="hidden" id="hasExpired" name="hasExpired" value="" />
+		<div class="bar">
+			<div class="buttonGroup">
+				<a href="#"  onclick="Submit()" id="deleteButton" class="iconButton disabled">
+					<span class="deleteIcon">&nbsp;</span>删除
+				</a>
+				<a href="javascript:;" id="refreshButton" class="iconButton">
+					<span class="refreshIcon">&nbsp;</span>刷新
+				</a>
+				<div id="filterMenu" class="dropdownMenu">
+				</div>
+			</div>
+		</div>
+		<table id="listTable" class="list">
+			<tr>
+				<th class="check">
+					<input type="checkbox" id="selectAll" />
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="sn">编号</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="amount">订单金额</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="member">会员</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="consignee">收货人</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="paymentMethodName">支付方式</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="shippingMethodName">配送方式</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="status">状态</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="createDate">创建日期</a>
+				</th>
+					<th>
+						<span>打印</span>
+					</th>
+				<th>
+					<span>操作</span>
+				</th>
+			</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="ids" value="1" />
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						￥aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						"代付款":"已付款"
+					</td>
+					<td>
+						<span title=" ">aaa</span>
+					</td>
+						<td>
+							<select name="print">
+								<option value="">请选择...</option>
+								<option value="1">订单</option>
+								<option value="1">购物单</option>
+								<option value="1">发货单</option>
+									<option value="1">快递单</option>
+							</select>
+						</td>
+					<td>
+						<a href=" ">[查看]</a>
+							<a href="eidtOrder.html?oid=1">[编辑]</a>
+					</td>
+				</tr>
+		</table>
+	<div class="pagination">
+			<a href="ListorderInfo.html?pageNo=1" class="firstPage">&nbsp;</a>
+			<a href="ListorderInfo.html?pageNo=1" class="previousPage">&nbsp;</a>
+				<a href="ListorderInfo.html?pageNo=1" class="currentPage"><span >1</span></a>
+				<a href="ListorderInfo.html?pageNo=2">2</a>
+				<a href="ListorderInfo.html?pageNo=3">3</a>
+				<span class="pageBreak">...</span>
+			<a href="ListorderInfo.html?pageNo=1" class="nextPage">&nbsp;</a>
+			<a href="ListorderInfo.html?pageNo=1" class="lastPage">&nbsp;</a>
+		<span class="pageSkip">
+			共-----页
+			<input id="pageNumber" name="pageNumber" value="1" maxlength="9" onpaste="return false;" />
+			<button type="submit">&nbsp;</button>
+		</span>
+	</div>
+	</form>
+</body>
+</html>
+

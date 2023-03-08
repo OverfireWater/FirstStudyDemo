@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location-Anchor</title>
+<!--    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        .box{width: 990px; margin:0 auto 10px; min-height: 400px; border:1px solid #e2e2e2;}
+        .box .hd{height: 30px; line-height: 30px; font-size: 16px; background:#f5f5f5; padding: 0 15px;}
+    </style>
+</head>
+<body>
+<div class="box" style='min-height:0;'>
+    <div class="hd">
+        <button type="button" id="but" >Go Floor1</button>
+        <button type="button" onclick="goFloor(2)">Go Floor2</button>
+<!--        <button type="button" id="but2" onclick="goFloor(3)">Go Floor3</button>-->
+        <button type="button" onclick="goFloor(4)">Go Floor4</button>
+        <button type="button" onclick="goFloor(5)">Go Floor5</button>
+    </div>
+</div>
+<div class="box">
+    <div class="hd"><a name="floor1">Floor 1</a></div>
+</div>
+<div class="box">
+    <div class="hd"><a name="floor2">Floor 2</a></div>
+</div>
+<div class="box">
+    <div class="hd"><a name="floor3">Floor 3</a></div>
+</div>
+<div class="box">
+    <div class="hd"><a name="floor4">Floor 4</a></div>
+</div>
+<div class="box">
+    <div class="hd"><a name="floor5">Floor 5</a></div>
+</div>
+<script type="text/javascript">
+
+    function goFloor(floor) {
+        var url = location.href;
+        url = url.indexOf('#floor') > 0 ? url.replace(/\#floor(\d)/, '#floor' + floor) : url + '#floor' + floor;
+        location.href = url;
+        location.reload(true);
+    }
+</script>
+<script>
+    $('#but').click(function (){
+        setInterval('window.location.reload()',500);
+        setInterval("$('#but2').trigger('click')",1000);
+
+
+    });
+
+
+</script>
+</body>
+</html>

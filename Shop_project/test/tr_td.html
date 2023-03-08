@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="layui/layui.js"></script>
+</head>
+<body>
+<form action="tr_td_php.php" method="post" class="layui-form">
+<!--<table class="table_tr">-->
+<!--    <tr>-->
+<!--        <th>分类</th>-->
+<!--        <th>价格</th>-->
+<!--    </tr>-->
+<!--    <tr id="tr_txt">-->
+<!--        <td><input type="text" name="classify[]"></td>-->
+<!--        <td><input type="text" name="money[]"></td>-->
+<!--        <td><input type="button" value="删除" id="delete-classify" onclick="delete_classify(this)"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td ><input type="radio" value="1" title="男" id="nan"  name="con" checked></td>-->
+<!--        <td ><input type="radio" value="0"  title="女" id="nv" name="con"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<!--    <input type="button" value="新增" id="but">-->
+<!--<input type="button" value="提交" id="sub">-->
+
+        <input type="radio" name="bShow" value="1" title="是" />
+        <input type="radio" name="bShow" value="0" title="否" checked/>
+
+</form>
+
+<!--<input type="text" value="" data-text="姓名" />-->
+<!--<input type="text" value="" data-text="电话" />-->
+
+<!--<button id="submit">提交</button>-->
+
+</body>
+<script>
+    $('[name=bShow]').each(function (i, item) {
+        if ($(item).val() == '0') {
+            //更改选中值
+            $(item).prop('checked', true);
+            //重新渲染
+            layui.use('form', function () {
+                var form = layui.form;
+                form.render();
+            });
+        }
+    });
+    $("#submit").click(function(){
+        $("input[type='text']").each(function () {
+            if ($(this).val() == "") {
+                console.log('请填写' + $(this).data('text'));
+                return false;
+            }
+        })
+    });
+    function  isempt(){
+        $("input[type='text']").each(function () {
+            if ($(this).val() == "") {
+                return false;
+            }
+        });
+    }
+    function delete_classify(id){
+        $(id).parent().parent().remove();
+    }
+    $(function (){
+        $('#but').click(function (){
+            $('.table_tr').append('<tr><td><input type="text"  name="classify[]" ></td><td><input type="text" name="money[]" ></td><td><input type="button" value="删除" id="delete-classify" onclick="delete_classify(this)"></td></tr>');
+        });
+        $('#sub').click(function (){
+            //  var con=$('input[name="con"]:checked').val();
+            // console.log(con);
+            var nan=$("#nan").val();
+            console.log(nan);
+            // var flag=true;
+            // var flag2=true;
+            // $("input[name*='classify']").each(function () {
+            //     if ($(this).val() == "") {
+            //         return flag=false;
+            //     }
+            // });
+            // $("input[name*='money']").each(function (){
+            //     if ($(this).val() == "") {
+            //         return flag2=false;
+            //     }
+            // });
+            // var classify_classify=[];
+            // $('input[name*="classify"]').each(function (index){
+            //     classify_classify[index]=$(this).val();
+            // });
+            // var classify_money=[];
+            // $('input[name*="money"]').each(function (index){
+            //     classify_money[index]=$(this).val();
+            // });
+            // console.log(flag);
+            // console.log(flag2);
+            // if (flag==true && flag2==true){
+            //     alert('success');
+            // }else {
+            //     alert('error');
+            // }
+            // console.log(classify_classify.length);
+            // var classify_classify_arr = classify_classify.filter(function (s) {
+            //     return s && s.trim();
+            // });
+            // var classify_money_arr = classify_money.filter(function (s) {
+            //     return s && s.trim();
+            // });
+            // if (classify_classify_arr.length==classify_money_arr.length){
+            //     alert("==");
+            // }else {
+            //     alert('不相等');
+            // }
+            // console.log(classify_classify_arr);
+            // console.log(classify_money_arr);
+            // $.ajax({
+            //     type:'post',
+            //     url:'tr_td_php.php',
+            //     data:{'classify':classify_classify,'money':classify_money},
+            //     dataType:'text',
+            //     success:function (result){
+            //         console.log(result);
+            //     },
+            // });
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>添加会员</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+	.specificationSelect {
+		height: 100px;
+		padding: 5px;
+		overflow-y: scroll;
+		border: 1px solid #cccccc;
+	}
+	
+	.specificationSelect li {
+		float: left;
+		min-width: 150px;
+		_width: 200px;
+	}
+</style>
+<script type="text/javascript">
+	var productImageIndex = 1;
+	var i=2;
+// 增加商品图片
+function addImage() {
+
+	
+	var person=document.getElementById("productImageTable");
+	var tr=document.createElement("tr");
+	tr.id=i;
+	var td=document.createElement("td");
+	var input=document.createElement("input");
+	input.type="file";
+	input.name="productImagesfile";
+	input.class="productImageFile ignore"
+	
+	var td1=document.createElement("td");
+	var input1=document.createElement("input");
+	input1.type="text";
+	input1.name="productImagestitle";
+	input1.class="text";
+	
+	//input1.value="productImages"+productImageIndex+"title";	
+	
+	var td2=document.createElement("td");
+	var input2=document.createElement("input");
+	input2.type="text";
+	input2.name="productImagesorder";
+	input2.class="text productImageOrder";
+	input2.size="3";
+	
+
+	var td3=document.createElement("td");
+	var a=document.createElement("a");
+	a.class="deleteProductImage";
+	a.id=i;
+	//a.href="test.html";
+	a.innerHTML ="[删除]";
+	td.appendChild(input);
+	td1.appendChild(input1);
+	td2.appendChild(input2);
+	td3.appendChild(a);
+	tr.appendChild(td)
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	person.appendChild(tr);
+	productImageIndex ++;
+	
+	i ++;
+	a.onclick=function(){
+		person.deleteRow(a.getAttribute("id"));
+	}
+	var count=document.getElementsByName("count")[0];
+	count.value=person.rows.length-2;
+	
+	}
+
+var xmlHttp;   
+   function createXMLHttpRequest(){   
+       if(window.ActiveXObject){   
+           xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");   
+      }else if(window.XMLHttpRequest){   
+          xmlHttp=new XMLHttpRequest();   
+     }   
+  } 
+function callback(){   
+  if(xmlHttp.readyState==4){   
+ 	if(xmlHttp.status==200){ 
+	 
+         createTable();   
+    }  
+   }  
+ }
+
+
+// 加载属性
+//设置传输方式以及地址
+	function loadAttribute() {
+	 createXMLHttpRequest();   
+ 	 var id=document.getElementById("productCategoryId").value;  
+     var queryString="/Shopxx_ht/servlet/getProAttrbuitServlet?id="+id;  
+  	 xmlHttp.onreadystatechange=callback;  
+	 xmlHttp.open("GET",queryString,true);   
+     xmlHttp.send(null);   
+	}
+
+	function clearTable(){
+	var mybody=document.getElementById("mybody");
+	while(mybody.childNodes.length>0){
+		mybody.removeChild(mybody.childNodes[0]);  
+	}
+	}
+	function createTable(){
+	clearTable();
+		var mybody=document.getElementById("mybody");
+		
+		//获取servlet返回的xml数据
+		var result=xmlHttp.responseXML.getElementsByTagName("person");
+		for(var i=0 ;i<result.length;i++){
+		var node=result[i].getElementsByTagName("attName")[0].firstChild.nodeValue
+			
+			
+			var row=document.createElement("tr");
+			var cellattName=document.createElement("th");
+			var cellattValue=document.createElement("td");
+			
+		
+			cellattName.appendChild(document.createTextNode(result[i].getElementsByTagName("attName")[0].firstChild.nodeValue));
+			var input = document.createElement('input');
+			input.name=result[i].getElementsByTagName("attName")[0].firstChild.nodeValue;
+			input.class="text";
+			input.maxlenght="200";
+			cellattValue.appendChild(input)
+			row.appendChild(cellattName);
+			row.appendChild(cellattValue);
+					
+			mybody.appendChild(row);
+		
+			
+			
+		}
+		
+	
+	}
+	function validate_required()
+	{
+	var count=document.getElementsByName("productImagesfile");
+	var counttitle=document.getElementsByName("productImagestitle");
+	var countorder=document.getElementsByName("productImagesorder");	
+		
+			for(var j=0; j<3; j++){
+				if((count[j].value=="" || counttitle[j].value=="")){
+				alert("图片信息填写不完善");
+				return false;
+				}else{
+				if(countorder[j].value==""){
+				alert("图片信息填写不完善");
+				return false;
+				}
+				}
+				
+			}	
+			return true;
+			
+	}
+</script>
+</head>
+<body onload="loadAttribute()">
+
+
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href="http://demo.shopxx.net/admin/common/index.jhtml">首页</a> &raquo; 添加会员
+	</div>
+	<form id="inputForm" action="/Shopxx_ht/servlet/updateCustomerServlet" onsubmit="return validate_required();"  method="post" >
+		<input type="hidden" name="cid" value="1" />
+		<ul id="tab" class="tab">
+			<li>
+				<input  type="button" value="基本信息" />
+			</li>
+			<li>
+				<input type="button" value="个人资料" />
+			</li>
+			
+		</ul>
+		<table class="input tabContent">
+				
+			<tr>
+				<th>
+					<span class="requiredField">*</span>用户名:
+				</th>
+				<td>
+				<input type="text" value="1" class="text" name="name"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>密码:
+				</th>
+				<td>
+					<input type="password" value="1"  name="password" class="text"  maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>确认密码:
+				</th>
+				<td>
+					<input type="password"  value="1" name="qrpassword" class="text"  maxlength="100"  />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>Email:
+				</th>
+				<td>
+					<input type="text" value="1" name="email" class="text"  maxlength="16" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					昵称:
+				</th>
+				<td>
+					<label>
+						<input type="text"  value="1" class="text"  name="nickname"/>
+					</label>
+				</td>
+			</tr>
+			<tr >
+				<th>
+					会员等级
+				</th>
+				<td>
+				<select name="greade">
+				
+					<option value="">
+					aaa
+					</option>			
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					是否启用:
+				</th>
+				<td>
+				
+					<input type="checkbox" checked="checked" value="1" name="state" class="checknox"  />
+
+					<input type="checkbox"  value="1" name="state" class="checknox"  />
+				</td>
+			</tr>
+		</table>
+		
+		
+		
+		<table id="parameterTable" class="input tabContent">
+				<tr>
+				<th>
+					<span class="requiredField">*</span>姓名:
+				</th>
+				<td>
+					<input type="text"  name="trueName" class="text"  maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>性别:
+				</th>
+				<td>
+				
+					<input type="radio" name="sex"  value="男" checked="checked"/>男
+					<input type="radio" value="女" name="sex"/>女	
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>电话:
+				</th>
+				<td>
+					<input type="text" value="a" name="tellPhone" class="text"  maxlength="16" />
+				</td>
+			</tr>
+				<tr>
+				<th>
+					<span class="requiredField">*</span>手机:
+				</th>
+				<td>
+					<input type="text" value="a" name="cellPhone" class="text"  maxlength="16" />
+				</td>
+			</tr>
+		</table>
+		<table class="input">
+			<tr>
+				<th>&nbsp;
+				</th>
+				<td>
+					<input type="submit" class="button" value="确&nbsp;&nbsp;定"  />
+					<input type="button" class="button" value="返&nbsp;&nbsp;回" onclick="window.history.back();" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

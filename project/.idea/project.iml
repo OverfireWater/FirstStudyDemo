@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="ProjectObj" />
+    <orderEntry type="module" module-name="ProjectObj" />
+    <orderEntry type="module" module-name="ProjectObject" />
+    <orderEntry type="module" module-name="ProjectObject" />
+    <orderEntry type="module" module-name="ProjectObj" />
+    <orderEntry type="module" module-name="PHP_Smarty" />
+    <orderEntry type="module" module-name="PHP_Smarty" />
+    <orderEntry type="module" module-name="Shop_project" />
+  </component>
+</module>

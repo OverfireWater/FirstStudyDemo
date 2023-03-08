@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>添加商品</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+	.specificationSelect {
+		height: 100px;
+		padding: 5px;
+		overflow-y: scroll;
+		border: 1px solid #cccccc;
+	}
+	
+	.specificationSelect li {
+		float: left;
+		min-width: 150px;
+		_width: 200px;
+	}
+.shippingMethods label {
+	width: 150px;
+	display: block;
+	float: left;
+	padding-right: 6px;
+}
+</style>
+<script type="text/javascript">
+function addVal() {
+	var person=document.getElementById("val");
+	var tr=document.createElement("tr");
+	
+	var td=document.createElement("td");
+	var input=document.createElement("input");
+	input.type="text";
+	input.class="text";
+	input.name="vals";
+
+	var td1=document.createElement("td");
+	var a=document.createElement("a");
+	//a.href="test.html";
+	a.innerHTML ="[删除]";
+	
+	td.appendChild(input);
+	td1.appendChild(a);
+	tr.appendChild(td)
+	tr.appendChild(td1);
+	person.appendChild(tr);
+	a.onclick=function(){
+		person.deleteRow(a.getAttribute("id"));
+	}
+	var count=document.getElementsByName("count")[0];
+	count.value=person.rows.length-2;
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href=" ">首页</a> &raquo; 添加商品品牌</div>
+	<form id="inputForm" action="  " method="post">
+		<table class="input">
+			
+			
+			
+			<tr>
+				<th>
+					绑定分类:
+				</th>
+				<td>
+					<select id="productCategoryId" name="productCategoryId"  >
+							<option value="1" disabled="disabled">
+								aaa
+							</option>
+							<option value="1">
+								aaa
+							</option>
+					</select>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th>
+					<span class="requiredField">*</span>名称:				</th>
+				<td>
+					<input type="text" name="name" class="text" maxlength="200" />				</td>
+			</tr>
+			
+			
+			<tr>
+				<th>
+					排序:				
+					</th>
+				<td>
+					<input type="text" name="order" class="text" maxlength="200" />				</td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input type="button" name="add" value="增加可选项"   class="button" maxlength="200" onclick="addVal()" />	
+				</td>
+			</tr>
+			
+			
+			
+			
+			<tr>
+				<th>&nbsp;</th>
+				<td>
+				<table  id="val" width="100%">
+				</table>
+				</td>
+			</tr>
+			
+			
+			
+			
+			
+			<tr>
+				<th>&nbsp;				</th>
+				<td>
+					<input type="submit" class="button" value="确&nbsp;&nbsp;定" />
+					<input type="button" class="button" value="返&nbsp;&nbsp;回" onclick="location.href='list.jhtml'" />				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

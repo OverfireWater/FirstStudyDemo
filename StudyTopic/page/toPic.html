@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .border{
+            margin-top: 30px;
+            width: 600px;
+        }
+        .input_text_data{
+            width: 475px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .text{
+            width: 400px;
+            height: 100px;
+            padding-left: 10px;
+            font-size: 14px;
+        }
+        .text-span{
+            display: inline-block;
+            float: left;
+        }
+        .text-h{
+            width: 400px;
+            height: 50px;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+        .form_sub{
+            width: 150px;
+            height: 80px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <div class="border">
+        <div class="input_text_data">
+            <span class="text-span">题目：</span>
+            <label>
+                <textarea class="text" id="topic"></textarea>
+            </label>
+        </div>
+        <div class="input_text_data">
+            <span class="text-span">答案1：</span>
+            <label>
+                <textarea class="text-h" id="ans1"></textarea>
+            </label>
+        </div>
+        <div class="input_text_data">
+            <span class="text-span">答案2：</span>
+            <label>
+                <textarea class="text-h" id="ans2"></textarea>
+            </label>
+        </div>
+        <div class="input_text_data">
+            <span class="text-span">答案3：</span>
+            <label>
+                <textarea class="text-h" id="ans3"></textarea>
+            </label>
+        </div>
+        <div class="input_text_data">
+            <span class="text-span">答案4：</span>
+            <label>
+                <textarea class="text-h" id="ans4"></textarea>
+            </label>
+        </div>
+        <div class="input_text_data">
+            <input type="button" class="form_sub" id="sub" value="提交">
+        </div>
+    </div>
+</center>
+</body>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script src="../layui/layui.js"></script>
+<script>
+$(function (){
+    $('#sub').click(function (){
+        var topic=$("#topic").val();
+        var ans1=$("#ans1").val();
+        var ans2=$("#ans2").val();
+        var ans3=$("#ans3").val();
+        var ans4=$("#ans4").val();
+        $.ajax({
+            type:'post',
+            url:'../ser/pic_add.php',
+            data:{'topic':topic,'ans1':ans1,'ans2':ans2,'ans3':ans3,'ans4':ans4},
+            dataType:'text',
+            success:function (result){
+                if (result=="success"){
+                    $("#topic").val("");
+                    $("#ans1").val("");
+                    $("#ans2").val("");
+                    $("#ans3").val("");
+                    $("#ans4").val("");
+                    layer.msg('录入成功',{icon:1,time:1000});
+
+                }else {
+                    layer.msg('录入失败',{icon:0,time:1000});
+                }
+            }
+        });
+    });
+});
+</script>
+</html>

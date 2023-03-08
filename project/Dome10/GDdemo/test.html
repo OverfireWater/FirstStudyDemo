@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+</head>
+<script>
+    function SendDate(){
+        var httperquest=new XMLHttpRequest();
+        httperquest.onreadystatechange=function (){
+            if (httperquest.status==200 && httperquest.readyState==4){
+                var res=httperquest.responseText;
+                if(res=="right"){
+                    document.getElementById('form').submit();
+                }
+                else {
+                    document.getElementById('sp').innerText='验证码输入错误';
+                }
+            }
+        }
+        var txt=document.getElementById('text').value;
+        httperquest.open("GET","Session_services.php?text="+txt,true);
+        httperquest.send();
+
+    }
+    function shuaxin(){
+        document.getElementById('img').src='test.php?r='+Math.random();
+    }
+</script>
+<body>
+<center>
+    <form action="Session_services.php" method="post" id="form">
+    请输入验证码:<input type="text" id="text" name="auth" >
+        <span id="sp"></span>
+        <br><br>
+    <img src="Session_services.php" id="img" title="点击刷新验证码" onclick="shuaxin()">
+    <br><br>
+    <input  type="button" value="提交" onclick=" SendDate()">
+    </form>
+</center>
+
+</body>
+</html>

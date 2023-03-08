@@ -1,0 +1,281 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <script src="../js/jquery-2.1.0.js"></script>-->
+<!--&lt;!&ndash;          <style>&ndash;&gt;-->
+<!--&lt;!&ndash;              .div1{&ndash;&gt;-->
+<!--&lt;!&ndash;                  width: 100px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  height: 30px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  border-radius: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;                  position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .div1 .left{&ndash;&gt;-->
+<!--&lt;!&ndash;                  position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                  left:4px;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .div1 .right{&ndash;&gt;-->
+<!--&lt;!&ndash;                  position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;                  right:4px;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .div2{&ndash;&gt;-->
+<!--&lt;!&ndash;                  width: 50px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  height: 23px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  background: #fff;&ndash;&gt;-->
+<!--&lt;!&ndash;                  position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .open1{&ndash;&gt;-->
+<!--&lt;!&ndash;                  background: #00aaee;&ndash;&gt;-->
+<!--&lt;!&ndash;                  transition: all 2s;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .open2{&ndash;&gt;-->
+<!--&lt;!&ndash;                  top: 3px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  left: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  transition: all 2s;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .close1{&ndash;&gt;-->
+<!--&lt;!&ndash;                  width: 100px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  height: 30px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  border-radius: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;                  position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;                  background: #888888;&ndash;&gt;-->
+<!--&lt;!&ndash;                  transition: all 2s;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              .close2{&ndash;&gt;-->
+<!--&lt;!&ndash;                  left: 45px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  top: 3px;&ndash;&gt;-->
+<!--&lt;!&ndash;                  transition: all 2s;&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;          </style>&ndash;&gt;-->
+<!--    <script>-->
+<!--        // function getDate() {-->
+<!--        //     var date = new Date();-->
+<!--        //     var Y = date.getFullYear() + "-";-->
+<!--        //     var M = date.getMonth() + 1 + "-";-->
+<!--        //     var D = date.getDate() + " ";-->
+<!--        //     var H = date.getHours() + ":";-->
+<!--        //     if (date.getMinutes() < 10) {-->
+<!--        //         var m = "0" + date.getMinutes() + ":";-->
+<!--        //     } else {-->
+<!--        //         var m = date.getMinutes() + ":";-->
+<!--        //     }-->
+<!--        //     if (date.getSeconds() < 10) {-->
+<!--        //         var s = "0" + date.getSeconds();-->
+<!--        //     } else {-->
+<!--        //         var s = date.getSeconds();-->
+<!--        //     }-->
+<!--        //     var dateTime= Y + M + D + H + m + s;-->
+<!--        //     document.getElementById('date').value = dateTime;-->
+<!--        // }-->
+<!--        //-->
+<!--        // setInterval('getDate()', 1000);-->
+<!--        // $(function(){-->
+<!--        //     $(".div2").on('click',function() {-->
+<!--        //         var class_id=($("#div2").attr("class"));-->
+<!--        //         if (class_id=="div2 open2"){-->
+<!--        //-->
+<!--        //             ($("#div1").attr("class","div1 close1"));-->
+<!--        //             ($("#div2").attr("class","div2 close2"));-->
+<!--        //             $("#span1").css("display","block");-->
+<!--        //             $("#span2").css("display","none");-->
+<!--        //         }else {-->
+<!--        //             ($("#div1").attr("class","div1 open1"));-->
+<!--        //             ($("#div2").attr("class","div2 open2"));-->
+<!--        //             $("#span1").css("display","none");-->
+<!--        //             $("#span2").css("display","block");-->
+<!--        //         }-->
+<!--        //     })-->
+<!--        // });-->
+<!--        // var user_id=2;-->
+<!--        // $(function (){-->
+<!--        //     $("#submit").click(function (){-->
+<!--        //         var class_id=($("#div2").attr("class"));-->
+<!--        //         if (class_id=="div2 open2"){-->
+<!--        //             var id=1;-->
+<!--        //-->
+<!--        //         }else {-->
+<!--        //             var id=0;-->
+<!--        //         }-->
+<!--        //         $.ajax({-->
+<!--        //             url:"test.php?id="+id+"&but_id="+user_id,-->
+<!--        //             success:function (result){-->
+<!--        //                 alert(result)-->
+<!--        //             }-->
+<!--        //         })-->
+<!--        //     });-->
+<!--        // });-->
+
+<!--    </script>-->
+<!--&lt;!&ndash;    <script>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        $(function (){&ndash;&gt;-->
+<!--&lt;!&ndash;            $("#but").click(function (){&ndash;&gt;-->
+
+<!--&lt;!&ndash;                var Src = "test.php";&ndash;&gt;-->
+<!--&lt;!&ndash;                $("#form_submit").attr("action",Src).submit();&ndash;&gt;-->
+
+<!--&lt;!&ndash;            });&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+<!--&lt;!&ndash;        $(function (){&ndash;&gt;-->
+<!--&lt;!&ndash;            $("#jjjj").click(function (){&ndash;&gt;-->
+
+<!--&lt;!&ndash;                var Src = "http://www.baidu.com/";&ndash;&gt;-->
+<!--&lt;!&ndash;                $("#form_submit").attr("action",Src).submit();&ndash;&gt;-->
+<!--&lt;!&ndash;            });&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+<!--&lt;!&ndash;    </script>&ndash;&gt;-->
+<!--</head>-->
+<!--<body >-->
+<!--&lt;!&ndash;<input type="password">&ndash;&gt;-->
+<!--&lt;!&ndash;<form   method="post" id="form_submit">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" value="11111" name="text">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div id="div1" class="div1 open1">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span id="span1" class="left" style="display:none;">异常</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        <span id="span2" class="right" style="line-height: 24px">正常</span>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div id="div2" class="div2 open2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" id="date">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <input id="but" type="button" value="提交" >&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="button" value="fjfjf" id="jjjj">&ndash;&gt;-->
+<!--&lt;!&ndash;</form>/&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="radio-checked">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label for="user">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input name="user" id="user" type="radio" value="1">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span>无</span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label for="name">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input name="user" id="name" type="radio" value="2">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span>有</span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </label>&ndash;&gt;-->
+
+<!--<a href="user/File/user.png"> 11</a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>上传文件</title>
+
+    <script type="text/javascript">
+
+        function sub() {
+
+            var obj = new XMLHttpRequest();
+
+            obj.onreadystatechange = function () {
+
+                if (obj.status == 200 && obj.readyState == 4) {
+
+                    document.getElementById('con').innerHTML = obj.responseText;
+
+                }
+
+            }
+
+
+// 通过Ajax对象的upload属性的onprogress事件感知当前文件上传状态
+
+            obj.upload.onprogress = function (evt) {
+
+// 上传附件大小的百分比
+
+                var per = Math.floor((evt.loaded / evt.total) * 100) + "%";
+
+// 当上传文件时显示进度条
+
+                document.getElementById('parent').style.display = 'block';
+
+// 通过上传百分比设置进度条样式的宽度
+
+                document.getElementById('son').style.width = per;
+
+// 在进度条上显示上传的进度值
+
+                document.getElementById('son').innerHTML = per;
+
+            }
+
+
+// 通过FormData收集零散的文件上传信息
+
+            var fm = document.getElementById('userfile3').files[0];
+
+            var fd = new FormData();
+
+            fd.append('userfile', fm);
+
+
+            obj.open("post", "upload.php");
+
+            obj.send(fd);
+
+        }
+
+    </script>
+
+    <style type="text/css">
+
+        #parent {
+
+            width: 200px;
+
+            height: 20px;
+
+            border: 2px solid gray;
+
+            background: lightgray;
+
+            display: none;
+
+        }
+
+        #son {
+
+            width: 0;
+
+            height: 100%;
+
+            background: lightgreen;
+
+            text-align: center;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h2>Ajax实现进度条文件上传</h2>
+
+<div id="parent">
+
+    <div id="son"></div>
+
+</div>
+
+<p id="con"></p>
+
+<input type="file" name="userfile" id="userfile3"><br><br>
+
+<input type="button" name="btn" value="文件上传" onclick="sub()">
+
+</body>
+
+</html>
+
+

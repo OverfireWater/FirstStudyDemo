@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width: 600px;
+        }
+        td,th{
+            border: 1px solid;
+        }
+    </style>
+    <script src="../JS/jquery-1.8.3.min.js"></script>
+    <script>
+        $(function (){
+            $("#txt").keypress(function (){
+                $.ajax({
+                    type:"get",
+                    url:"../Service/AjaxService.php",
+                    async:"true",
+                    data:{"book_name":$("#txt").val()},
+                    dataType:"json",
+                    success:function (data) {
+                        $.each(data.result,function (index,obj) {
+                            // alert(obj);
+                            $("#tab").append("<tr><td>"+obj["book_id"]+"</td>"+"<td>"+obj["book_name"]+"</td>"+
+                                "<td>"+obj["book_author"]+"</td>"+"<td>"+obj["book_intro"]+"</td>"+"<td>"+
+                                obj["book_img"]+"</td>"+"<td>"+obj["remark"]+"</td></tr>");
+                        });
+                    },
+                    error:function () {
+                        alert("请求失败");
+                    }
+
+                });
+
+
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+<center>
+<input type="text" id="txt">
+<table cellspacing="0" id="tab">
+    <tr>
+        <th>编号</th>
+        <th>名称</th>
+        <th>作者</th>
+        <th>简介</th>
+        <th>出版日期</th>
+        <th>图片</th>
+    </tr>
+</table>
+</center>
+<div id="div1">
+
+</div>
+
+</body>
+</html>

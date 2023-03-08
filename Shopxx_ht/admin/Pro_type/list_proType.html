@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>添加商品</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+	.specificationSelect {
+		height: 100px;
+		padding: 5px;
+		overflow-y: scroll;
+		border: 1px solid #cccccc;
+	}
+	
+	.specificationSelect li {
+		float: left;
+		min-width: 150px;
+		_width: 200px;
+	}
+</style>
+<script type="text/javascript">
+function submits(){
+	document.getElementById("listForm").submit();
+}
+</script>
+</head>
+<body>
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href="  ">首页</a> &raquo; 商品列表 <span>(共<span id="pageTotal">300</span>条记录)</span>
+	</div>
+	<form id="listForm" action="  " method="get">
+		<div class="bar">
+			<a href="add_proType.html" class="iconButton">
+				<span class="addIcon">&nbsp;</span>添加
+			</a>
+			<div class="buttonWrap">
+				<a href="#" id="deleteButton" onclick="submits()" class="iconButton disabled">
+					<span class="deleteIcon">&nbsp;</span>删除
+				</a>
+				<a href="javascript:;" id="refreshButton" class="iconButton">
+					<span class="refreshIcon">&nbsp;</span>刷新
+				</a>
+				
+				<a href="javascript:;" id="moreButton" class="button">更多选项</a>
+				<div class="menuWrap">
+					<a href="javascript:;" id="pageSizeSelect" class="button">
+						每页显示<span class="arrow">&nbsp;</span>
+					</a>
+					<div class="popupMenu">
+						<ul id="pageSizeOption">
+							<li>
+								<a href="javascript:;" val="10">10</a>
+							</li>
+							<li>
+								<a href="javascript:;" class="current" val="20">20</a>
+							</li>
+							<li>
+								<a href="javascript:;" val="50">50</a>
+							</li>
+							<li>
+								<a href="javascript:;" val="100">100</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="menuWrap">
+				<div class="search">
+					<span id="searchPropertySelect" class="arrow">&nbsp;</span>
+					<input type="text" id="searchValue" name="searchValue" value="" maxlength="200" />
+					<button type="submit">&nbsp;</button>
+				</div>
+				<div class="popupMenu">
+					<ul id="searchPropertyOption">
+						<li>
+							<a href="javascript:;" val="name">类型名称</a>
+						</li>
+						<li>
+							<a href="javascript:;" val="sn">类型编号</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<table id="listTable" class="list">
+			<tr>
+				<th class="check">
+					<input type="checkbox" id="selectAll" />
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="sn">编号</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="name">类型</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="productCategory">是否父类</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="price">类型备注</a>
+				</th>
+				<th>
+					<span>操作</span>
+				</th>
+			</tr>
+			
+			
+			
+			
+			
+			
+			
+			<!--
+			开始
+			-->
+				<tr>
+					<td>
+						<input type="checkbox"  name="ids" value="1" />
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						<span title="尚都比拉女装2013夏装新款蕾丝连衣裙 韩版修身雪纺打底裙子 春款[白色 M]">
+
+							是
+						
+						 否
+						
+						</span>
+					</td>
+					<td>
+						aaaa
+					</td>
+					
+					<td>
+						<a href="edit.html?typeID=1">[编辑]</a>
+					</td>
+				</tr>
+				
+				<!--
+			结束
+			-->
+				<!-- 
+				<tr>
+					<td>
+						<input type="checkbox" name="ids" value="288" />
+					</td>
+					<td>
+						201304517
+					</td>
+					<td>
+						<span title="尚都比拉2013夏装新款 韩版优雅甜美淑女装 春款蕾丝雪纺连衣裙子[绿色 XL]">
+							尚都比拉2013夏装新款 韩版优雅甜美淑女装 春款蕾丝雪...
+						</span>
+					</td>
+					<td>
+						连衣裙
+					</td>
+					<td>
+						299.00
+					</td>
+					<td>
+						
+					</td>
+					<td>
+					</td>
+					<td>
+						<span class="trueIcon">&nbsp;</span>
+					</td>
+					<td>
+						<span title="2013-06-13 00:19:50">2013-06-13</span>
+					</td>
+					<td>
+						<a href="edit.html">[编辑]</a>
+						
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input type="checkbox" name="ids" value="287" />
+					</td>
+					<td>
+						201304516
+					</td>
+					<td>
+						<span title="尚都比拉2013夏装新款 韩版优雅淑女装 七分袖蕾丝雪纺连衣裙春款[白色 S]">
+							尚都比拉2013夏装新款 韩版优雅淑女装 七分袖蕾丝雪纺...
+						</span>
+					</td>
+					<td>
+						连衣裙
+					</td>
+					<td>
+						339.00
+					</td>
+					<td>
+						
+					</td>
+					<td>
+					</td>
+					<td>
+						<span class="trueIcon">&nbsp;</span>
+					</td>
+					<td>
+						<span title="2013-06-13 00:19:49">2013-06-13</span>
+					</td>
+					<td>
+						<a href="edit.html">[编辑]</a>
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="ids" value="286" />
+					</td>
+					<td>
+						201304515
+					</td>
+					<td>
+						<span title="尚都比拉2013夏装新款 韩版优雅淑女装 七分袖蕾丝雪纺连衣裙春款[白色 M]">
+							尚都比拉2013夏装新款 韩版优雅淑女装 七分袖蕾丝雪纺...
+						</span>
+					</td>
+					<td>
+						连衣裙
+					</td>
+					<td>
+						339.00
+					</td>
+					<td>
+						
+					</td>
+					<td>
+					</td>
+					<td>
+						<span class="trueIcon">&nbsp;</span>
+					</td>
+					<td>
+						<span title="2013-06-13 00:19:48">2013-06-13</span>
+					</td>
+					<td>
+						<a href="edit.html">[编辑]</a>
+							
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="ids" value="285" />
+					</td>
+					<td>
+						201304514
+					</td>
+					<td>
+						<span title="尚都比拉2013夏装新款 春款修身淑女装 雪纺短袖假两件套连衣裙子[绿色 S]">
+							尚都比拉2013夏装新款 春款修身淑女装 雪纺短袖假两件...
+						</span>
+					</td>
+					<td>
+						连衣裙
+					</td>
+					<td>
+						269.00
+					</td>
+					<td>
+						
+					</td>
+					<td>
+					</td>
+					<td>
+						<span class="trueIcon">&nbsp;</span>
+					</td>
+					<td>
+						<span title="2013-06-13 00:19:47">2013-06-13</span>
+					</td>
+					<td>
+						<a href="edit.html">[编辑]</a>
+							
+					</td>
+				</tr>
+				 -->
+				
+		</table>
+<input type="hidden" id="pageSize" name="pageSize" value="20" />
+<input type="hidden" id="searchProperty" name="searchProperty" value="" />
+<input type="hidden" id="orderProperty" name="orderProperty" value="" />
+<input type="hidden" id="orderDirection" name="orderDirection" value="" />
+	<div class="pagination">
+			<a class="firstPage" href="list_proType.jsp?pageNumber=1">&nbsp;</a>
+			<a class="previousPage" href="list_proType.jsp?pageNumber=<%=pm.getPreviousPageNo()%>">&nbsp;</a>
+				<a class="currentPage">1</a>
+				<a href="javascript: $.pageSkip(2);">2</a>
+				<a href="javascript: $.pageSkip(3);">3</a>
+				<span class="pageBreak">...</span>
+			<a class="nextPage" href="list_proType.jsp?pageNumber=<%=pm.getNextPageNo()%>">&nbsp;</a>
+			<a class="lastPage" href="list_proType.jsp?pageNumber=<%=pm.getTotalPages()%>">&nbsp;</a>
+		<span class="pageSkip">
+			共15页 到第<input id="pageNumber" name="pageNumber" value="1" maxlength="9" onpaste="return false;" />页<button type="submit">&nbsp;</button>
+		</span>
+	</div>
+	</form>
+</body>
+</html>

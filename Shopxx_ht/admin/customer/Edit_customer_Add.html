@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>添加会员等级</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+	.specificationSelect {
+		height: 100px;
+		padding: 5px;
+		overflow-y: scroll;
+		border: 1px solid #cccccc;
+	}
+	
+	.specificationSelect li {
+		float: left;
+		min-width: 150px;
+		_width: 200px;
+	}
+</style>
+<script type="text/javascript">
+var xmlHttp;   
+   function createXMLHttpRequest(){   
+       if(window.ActiveXObject){   
+           xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");   
+      }else if(window.XMLHttpRequest){   
+          xmlHttp=new XMLHttpRequest();   
+     }   
+  } 
+function callback(){   
+  if(xmlHttp.readyState==4){   
+ 	if(xmlHttp.status==200){ 
+	 
+         createTable();   
+    }  
+   }  
+ }
+
+function getpar(){
+	var par=document.getElementById('productCategoryId').selectedIndex;
+	var selectText = document.getElementById("productCategoryId").options[par].text
+	document.getElementById('par').value=selectText;
+	
+//	document.getElementById('par').value=par[par.options.selectedIndex].text;
+
+}
+
+
+// 加载属性
+//设置传输方式以及地址
+	function loadAttribute() {
+	 createXMLHttpRequest(); 
+	 getpar();  
+ 	 var id=document.getElementById("productCategoryId").value;  
+     var queryString="/Shopxx_ht/servlet/getAreaServlet?aId="+id;  
+  	 xmlHttp.onreadystatechange=callback;  
+	 xmlHttp.open("GET",queryString,true);   
+     xmlHttp.send(null);   
+	}
+
+	function clearTable(){
+	var mybody=document.getElementById("myselect");
+	while(mybody.childNodes.length>0){
+		mybody.removeChild(mybody.childNodes[0]);  
+	}
+	}
+	function createTable(){
+	clearTable();
+		var myselect=document.getElementById("myselect");
+		
+		//获取servlet返回的xml数据
+		var result=xmlHttp.responseXML.getElementsByTagName("person");
+		
+		for(var i=0 ;i<result.length;i++){
+		var node=result[i].getElementsByTagName("add")[0].firstChild.nodeValue;
+			var op= new Option(node,node);    // 新建OPTION (op) 
+			myselect.add(op);
+		}
+	}
+	
+	
+</script>
+</head>
+<body onload="loadAttribute()">&lt;&nbsp;  
+  
+  
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href="">首页</a> &raquo; 添加会员收货地址</div>
+	<form id="inputForm" action="" method="post">
+		<table class="input">
+			<tr>
+				<th>
+					<span class="requiredField">*</span>会员名称 :</th>
+				<td>
+					<input type="text" name="levelName" value="txt1" class="text" maxlength="200" />	</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>省（市） :</th>
+				<td>
+				<input type="hidden"   name="productCategoryId" id="par" />
+					<select id="productCategoryId"   onchange="loadAttribute()">
+							<option value="op" selected ="">aaa</option>
+					</select>	
+				</td>
+			</tr>
+			<tr>
+				<th>
+					市（县）（区）:
+				</th>
+				<td>
+					<select id="myselect" name="myselect">
+						<option>aaaa</option>
+					</select>	
+				</td>
+			</tr>
+			<tr>
+				<th>
+					街道:
+				</th>
+				<td>
+					<input type="text" name="Street" class="text" maxlength="200" />
+				</td>
+			</tr>
+				<tr>
+				<th>
+					是否默认:
+				</th>
+				<td>
+					<input type="checkbox" checked="a" name="isDef" value="1" class="checkbox" maxlength="200" />				</td>
+			</tr>
+			<tr>
+				<th>&nbsp;				</th>
+				<td>
+					<input type="submit" class="button" value="确&nbsp;&nbsp;定" />
+					<input type="button" class="button" value="返&nbsp;&nbsp;回" onclick="location.href='list.jhtml'" />				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+

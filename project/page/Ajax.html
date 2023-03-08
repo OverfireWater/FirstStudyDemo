@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+        }
+        td{
+            border: 1px solid;
+        }
+
+    </style>
+    <script src="JS/jquery-1.8.3.min.js"></script>
+    <script>
+        //$.ajax({name:value,name:value,name:value .....});
+        /*
+        * type 表表示请求类型
+        * url ajax请求地址
+        * async 是否为异步
+        * data 发送到服务器的数据
+        * dataType 预估服务器返回的数据类型
+        *contentType 设置请求头
+        * success 成功
+        * error 请求失败
+        * */
+        $(function (){
+                $.ajax({
+                    type: "get",
+                    url: "Json.php",
+                    async:true,
+                    data:{"name":$("#txt").val()},
+                    dataType:"json",
+                    success: function (data) {
+                      //  如果是一个key 对应的是一个json对象直接获取
+                      //  如果一个key对应的是json数组就需要通过obj['uid']
+                      $.each(data.result,function (index,obj){
+                          $("#tab").append("<tr><td>"+obj['uid']+"</td><td>"+obj['uname']+"</td></tr>");
+                      });
+                    },
+                    error:function (){
+                        alert("服务器访问失败");
+                    }
+                });
+        });
+
+
+    </script>
+</head>
+<body>
+<!--
+    在文本框输入的时候从后台获取数据
+-->
+    <input type="text" id="txt">
+<table cellspacing="0" style="border: 1px solid" id="tab">
+    <tr>
+        <td>ID</td>
+        <td>姓名</td>
+    </tr>
+</table>
+
+
+</body>
+</html>

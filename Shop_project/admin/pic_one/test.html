@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../layui/css/layui.css"/>
+    <style>
+        .const{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="const">
+        <button type="button" id="file_choose_but" class="layui-btn">按钮</button>
+    <input type="file" name="file" id="file" style="display: none" onchange="choose_file_block()">
+    <div class="img">
+        <img src="" id="choose_img" width="100" height="100" alt="">
+    </div>
+</div>
+
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script src="../../test/js/jquery-1.8.3.min.js"></script>
+</body>
+<script>
+    function choose_file_block(){
+        if ($('#file').val()){
+            var files=document.getElementById('file').files[0];
+            var url=window.URL.createObjectURL(files);
+            $('#choose_img').attr('src',url);
+        }else {
+            $('#choose_img').attr('src',"");
+        }
+
+    }
+
+
+    $(function (){
+        $('#file_choose_but').click(function (){
+            $('#file').trigger('click');
+        });
+    });
+</script>
+</html>

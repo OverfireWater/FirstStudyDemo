@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>常规使用：普通图片上传</legend>
+</fieldset>
+
+<div class="layui-upload">
+    <button type="button" class="layui-btn" id="test1" >上传图片</button>
+    <div class="layui-upload-list">
+        预览图： <img class="layui-upload-img" id="demo1" width="120" height="85" style="">
+        <p id="demoText"></p>
+    </div>
+</div>
+
+
+<div class="layui-upload">
+    图片上传：
+    <input type="text" name="test5" id="test5" value="" /> <button type="button" class="layui-btn" id="test2">多图片上传</button>
+    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+        预览图：<span style="color: red;">(*选择错误点击图片重新选择)</span>
+        <div class="layui-upload-list" id="demo2"></div>
+    </blockquote>
+</div>
+
+
+
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>高级应用：制作一个多文件列表</legend>
+</fieldset>
+
+<div class="layui-upload">
+    <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
+    <div class="layui-upload-list">
+        <table class="layui-table">
+            <thead>
+            <tr><th>文件名</th>
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                    预览图：(*选择错误点击图片重新选择)
+                    <div class="layui-upload-list" id="demo3"></div>
+                </blockquote>
+                <th>大小</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr></thead>
+            <tbody id="demoList"></tbody>
+        </table>
+    </div>
+    <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+</div>
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>绑定原始文件域</legend>
+</fieldset>
+
+<input type="file" name="file" id="test20">
+
+<script src="layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            ,url: '2.php' //改成您自己的上传接口
+            ,field: 'file' //字段名称
+            ,method: 'post' //提交方式
+            ,accept: 'images'  //上传格式
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+
+                obj.preview(function(index, file, result){
+
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+
+            }
+            ,done: function(res,index){
+
+                //document.getElementById("test5").value = "11111";
+
+                // $('#test5').attr('value', res.code3); //图片地址
+
+
+
+
+                if(res.code = "0"){
+                    return layer.msg('图片上传保存成功！');
+
+                }
+
+                //如果上传失败
+                if(res.code ="1"){
+                    return layer.msg('上传失败,图片已存在');
+                }
+                if(res.code ="2"){
+                    return layer.msg('上传失败,非法的图片格式');
+                }
+
+
+
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+
+
+//图片数组
+        var ad = [];
+
+        //多图片上传
+        upload.render({
+            elem: '#test2'
+            ,url: '2.php'
+            ,field:'file'
+            ,method:'post'
+            ,multiple:true
+            ,before:function(obj){
+
+
+                obj.preview(function(index,file,result){
+                    //预显示
+                    $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img  demo-delete" width="120" height="80" id="imgMy"> <span>"'+file.name+'"</span>')
+
+                });
+
+            }
+
+            ,done:function(res){
+
+                console.log(res);
+
+                //删除
+                $('.demo-delete').on('click', function(){
+
+                    location.reload();//刷新页面
+                    $.post('upload.php', {'fData': res.data.data3, 'Action': 'dleImg'}, function (data) {
+
+                        console.log(data);
+                        if (data.delcdata = 1) {
+                            return layer.msg("删除成功");
+                        }
+                        if (data.delcdata = 0) {
+                            return layer.msg("删除失败");
+                        }
+                    });
+
+                });
+                //加入返回的地址数组
+                ad.push(res.data.data3)
+
+                $('#test5').val(ad);
+
+                if(res.code = "0"){
+                    return layer.msg('图片上传保存成功！');
+                }
+
+                //如果上传失败
+                if(res.code ="1"){
+                    return layer.msg('上传失败,图片已存在');
+                }
+                if(res.code ="2"){
+                    return layer.msg('上传失败,非法的图片格式');
+                }
+            }
+        });
+        //多文件列表示例
+        var demoListView = $('#demoList')
+            ,uploadListIns = upload.render({
+            elem: '#testList'
+            ,url: '2.php' //改成您自己的上传接口
+            ,accept: 'file'
+            ,multiple: true
+            ,auto: false
+            ,bindAction: '#testListAction'
+            ,choose: function(obj){
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    //预显示
+                    $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img  demo-delete" width="120" height="80" id=""> <span>"'+file.name+'"</span>')
+                    var tr = $(['<tr id="upload-'+ index +'">'
+                        ,'<td>'+ file.name +'</td>'
+                        ,'<td>'+ (file.size/1024).toFixed(1) +'kb</td>'
+                        ,'<td>等待上传</td>'
+                        ,'<td>'
+                        ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        ,'</td>'
+                        ,'</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.demo-reload').on('click', function(){
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.demo-delete').on('click', function(){
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+
+                    demoListView.append(tr);
+                });
+            }
+            ,done: function(res, index, upload){
+                if(res.files.file){ //上传成功
+                    var tr = demoListView.find('tr#upload-'+ index)
+                        ,tds = tr.children();
+                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                    tds.eq(3).html(''); //清空操作
+                    return delete this.files[index]; //删除文件队列已经上传成功的文件
+                }
+                this.error(index, upload);
+            }
+            ,error: function(index, upload){
+                var tr = demoListView.find('tr#upload-'+ index)
+                    ,tds = tr.children();
+                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+            }
+        });
+//绑定原始文件域
+        upload.render({
+            elem: '#test20'
+            ,url: 'upload.php' //改成您自己的上传接口
+            ,field: 'file'
+            ,done: function(res){
+
+                console.log(res)
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

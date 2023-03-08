@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+$(function(){
+	$('.show_box').hover(function(){
+		$('.delete').show();
+		alert();
+		);
+	});

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>欢迎来到登录界面</title>
+		<link rel="stylesheet" href="css/login.css">
+		<script src="../JS/message.js"></script>
+		<style>
+			.text-none{
+				margin-top: 10px;
+				font-size: 14px;
+				color: red;
+				display: none;
+			}
+			.text-block{
+				display: block;
+			}
+		</style>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script>
+			function href_index(){
+				window.location.replace('index.php');
+			}
+			$(function (){
+				$('#username').blur(function (){
+					if ($('#username').val()==""||$('#username').val()==null){
+						$('#block-name').addClass('text-block');
+						$('#username').css('border-color','red');
+					}
+				});
+				$('#username').focus(function (){
+						$('#username').removeAttr('style','');
+						$('#block-name').removeClass('text-block');
+				});
+
+				$('#userpwd').blur(function (){
+					if ($('#userpwd').val()==""||$('#userpwd').val()==null){
+						$('#userpwd').css('border-color','red');
+						$('#block-pwd').addClass('text-block');
+					}
+				});
+				$('#userpwd').focus(function (){
+						$('#userpwd').removeAttr('style','');
+						$('#block-pwd').removeClass('text-block');
+				});
+
+				$('#userCaptcha').blur(function (){
+					if ($('#userCaptcha').val()==""||$('#userCaptcha').val()==null){
+						$('#userCaptcha').css('border-color','red');
+						$('#block-captcha').addClass('text-block');
+					}
+				});
+				$('#userCaptcha').focus(function (){
+					$('#userCaptcha').removeAttr('style','');
+					$('#block-captcha').removeClass('text-block');
+				});
+
+				$('.login-but').click(function (){
+					if ($('#username').val()!="" && $('#userpwd').val()!="" && $('#userCaptcha').val()!=""){
+						$.ajax({
+							type:"post",
+							url:"../Services/loginServices.php",
+							data:{"username":$('#username').val(),"userpwd":$('#userpwd').val(),"userCaptcha":$('#userCaptcha').val()},
+							dataType:"text",
+							success:function (result){
+									if (result=="success"){
+										showMessage('登陆成功！!','success',2000);
+										setInterval(href_index,2000);
+									}
+									if (result=="error"){
+										showMessage('账号或密码错误！!','error',2000);
+									}
+									if (result=="Cap_error"){
+										showMessage('验证码错误!','error',2000);
+									}
+							}
+						});
+					}else {
+						$('.text-none').addClass('text-block');
+						$('.input').css('border-color','red');
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+	<div class="background">
+			<center>
+				<form >
+				<div class="login-center">
+					<div class="login-border-center">
+						<h2>欢迎来到优品购物中心</h2>
+						<div class="login-user">
+								<input type="text" id="username" name="username" class="input"  placeholder="请输入用户名" onkeyup="this.value=this.value.replace(/[, ]/g,'')">
+							<div class="text-none" id="block-name">用户名不能为空</div>
+						</div>
+						<div class="login-user">
+								<input type="password" id="userpwd" name="userpwd" class="input" placeholder="请输入密码" onkeyup="this.value=this.value.replace(/[, ]/g,'')">
+							<div class="text-none" id="block-pwd">密码不能为空</div>
+						</div>
+						<div class="login-captcha">
+								<input type="text" id="userCaptcha" name="userCaptcha" class="input" placeholder="请输入验证码" onkeyup="this.value=this.value.replace(/[, ]/g,'')">
+							<div class="captcha" ><img style="border-radius: 10px;" width="100" height="40" src="../Services/CaptchaServices.php" alt="验证码" title="点击切换验证码" onclick="this.src=this.src+'?'"></div>
+						</div>
+						<div class="text-none" id="block-captcha">验证码不能为空</div>
+						<div>
+								<input class="login-but" type="button" value="登录">
+						</div>
+<!--						注册-->
+						<div class="login-enroll">
+							<a href="enroll.html">注册账号</a>
+						</div>
+<!--						后台登录界面-->
+						<div class="login-admin">
+							<a href="#">后台管理</a>
+						</div>
+					</div>
+				</div>
+				</form>
+			</center>
+	</div>
+	</body>
+</html>

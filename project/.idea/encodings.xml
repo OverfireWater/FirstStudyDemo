@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$USER_HOME$/Downloads/test1 (1).php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Entily/pageInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Services/BulkdeleteDepart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Services/BulkdeleteEmploy.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Services/addEmployServices.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Services/departName.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Services/updateDepart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/Services/updateUserInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/departInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/employInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/main.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/middel.html" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/top.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/updateDepart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/updateEmploy.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProObj/object/page/updateUser.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Entily/AdminInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Entily/pageInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/CaptchaGD.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/addAdmin.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/deleteUserInfo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/loginServices.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/updateAdminServices.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/updatePwdAdmin.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ProjectObject/Services/updateUserInfoServices.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JSONDemo/DB/DBHelper.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Json_work/DB/DBHelper.php" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

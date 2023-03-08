@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg{
+            background-color: #888888;
+            border-bottom: 1px solid;
+        }
+    </style>
+    <script src="JS/jquery-1.8.3.min.js"></script>
+    <script>
+        $(function (){
+        //     $("#btn").click(
+        //         function (){
+        //             // $("#txt").attr("class","bg").attr("value","这是jquery的文本");
+        //
+        //             // $("div+span").attr("class","bg");
+        //             // $("div span").css("border","1px solid");
+        //             // $("div").css("border","1px solid");
+        //             // $("div>span").css("border","1px solid");
+        //             // $("span:not('#sp')").css("border","1px solid");
+
+        //         }
+        //     );
+                $(window).load(function (){
+                    // $("span:first").css("border","1px solid");
+                    // $("span:last").css("background-color","red");
+                    //从索引值0开始，选择奇数的span
+                    // $("span:even").css("background-color","red");
+                    // $("span:odd").css("background-color","red");
+                    //选取索引值为4的span
+                    // $("span:eq(4)").css("background-color","red");
+                    //选择索引为2的后面所有的span
+                    // $("span:gt(2)").css("background-color","red");
+                    //选择小于索引为5的span
+                    // $("span:lt(5)").css("background-color","red");
+                    //选择文本中有四的span
+                    // $("span:contains('四')").css("background-color","red");
+
+                    // $("p:empty").css("background-color","red");
+                    // $("div:has(span)").css("background-color","red");
+                    // $("div:parent").css("background-color","red");
+
+                    // $('span[id]').css("background-color","red");
+                    // $('span[id=one_span]').css("background-color","red");
+                    // $('span[id!=one_span]').css("background-color","red");
+                    // $('span[id^=one_span]').css("background-color","red");
+                    // $('span[id$=span]').css("background-color","red");
+                    // $('span[id][id$=two-span]').css("background-color","red");
+                    // $("ul li:first-child").css("background-color","red");
+                    // $("ul li:last-child").css("background-color","red");
+                    // $("ul li:only-child").css("background-color","red");
+                    // $(":input").css("background-color","red");
+                    // $(":text").css("background-color","red");
+                    // $(":password").css("background-color","red");
+                    // alert($(":radio").val());
+                    // alert($(":checkbox").val());
+                    // $(":submit").css("background-color","red");
+                    // alert($(":image").val());
+                    // $(":reset").css("background-color","red");
+                    $(":file").css("background-color","red");
+
+                })
+
+        });
+    </script>
+</head>
+<body>
+<input type="button" id="btn" value="提交">
+<input type="text" id="txt">
+<div>
+    <span id="one_span">这是第一个span</span>
+    <div>
+        <span id="two-span">这是第二个span</span>
+    </div>
+    <span id="sp">这是第三个div</span>
+    <br>
+    <span id="three-span">这是第四个span</span>
+    <br>
+    <span id="five-span">这是第五个span</span>
+    <br>
+    <span id="six-span">这是第六个span</span>
+</div>
+<span id="seven-span">第七个span</span>
+<p>这是文本</p>
+
+<ul>
+    <li>时间</li>
+    <li>年龄</li>
+    <li>电话</li>
+    <li>地址</li>
+    <li>姓名</li>
+</ul>
+<ul><li>邮箱</li></ul>
+
+<input type="button" value="提交">
+<input type="text">
+<input type="password">
+<input type="radio" name="男" value="男" >男<input type="radio" name="男" value="女" >女
+<input type="checkbox" >篮球
+<input type="submit">
+<img height="50px" width="50px" src="../Work_file_up/File/2022-10-11-21-42-38.jpg">
+<input type="reset">
+<input type="file">
+</body>
+</html>

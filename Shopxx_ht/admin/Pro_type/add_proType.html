@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>添加商品</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+	.specificationSelect {
+		height: 100px;
+		padding: 5px;
+		overflow-y: scroll;
+		border: 1px solid #cccccc;
+	}
+	
+	.specificationSelect li {
+		float: left;
+		min-width: 150px;
+		_width: 200px;
+	}
+</style>
+<script type="text/javascript">
+	function check(type){
+		if(type==1){
+			document.getElementById("father").style.display="block";
+		}else{
+			document.getElementById("father").style.display="none";
+		}
+		
+		
+	}
+</script>
+</head>
+<body>
+
+
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href=" ">首页</a> &raquo; 添加商品类型</div>
+	<form id="inputForm" action="  " method="post">
+		<table class="input">
+			<tr>
+				<th>
+					<span class="requiredField">*</span>名称:				</th>
+				<td>
+					<input type="text" name="name" class="text" maxlength="200" />				</td>
+			</tr>
+			<tr>
+			
+				<th> 类型 </th>
+				<td>
+				父类:<input type="radio" name="type" value="0" onclick="check(2)" checked="checked"/>子类:<input type="radio" value="1" onclick="check(1)" name="type" /> 
+					<select id="father" name="father" style="display: none"   >
+							<option value="1">
+								aaa
+							</option>
+					</select>
+					</td>
+			</tr><!--
+			<tr>
+				<th>
+					超时时间:
+				</th>
+				<td>
+					<input type="text" name="timeout" class="text" maxlength="9" title="单位: 分钟，留空表示永久有效" />
+				</td>
+			</tr>
+			-->
+			<tr>
+				<th>
+					备注:				</th>
+				<td>
+					<input type="text" name="remark" class="text" maxlength="200" />				</td>
+			</tr>
+			<tr>
+				<th>&nbsp;				</th>
+				<td>
+					<input type="submit" class="button" value="确&nbsp;&nbsp;定" />
+					<input type="button" class="button" value="返&nbsp;&nbsp;回" onclick="location.href='list.jhtml'" />				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+

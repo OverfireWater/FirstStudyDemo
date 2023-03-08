@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>会员列表</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.tools.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/editor/kindeditor.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript" src="../../resources/admin/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+	.specificationSelect {
+		height: 100px;
+		padding: 5px;
+		overflow-y: scroll;
+		border: 1px solid #cccccc;
+	}
+	
+	.specificationSelect li {
+		float: left;
+		min-width: 150px;
+		_width: 200px;
+	}
+.moreTable th {
+	width: 80px;
+	line-height: 25px;
+	padding: 5px 10px 5px 0px;
+	text-align: right;
+	font-weight: normal;
+	color: #333333;
+	background-color: #f8fbff;
+}
+
+.moreTable td {
+	line-height: 25px;
+	padding: 5px;
+	color: #666666;
+}
+
+.promotion {
+	color: #cccccc;
+}
+</style>
+<script type="text/javascript">
+function submits(){
+	document.getElementById("listForm").submit();
+
+}
+
+
+</script>
+</head>
+<body>
+
+
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href="  ">首页</a> &raquo; 商品列表 <span>(共<span id="pageTotal">--</span>条记录)</span>
+	</div>
+	<form id="listForm" action="  " method="get">
+		<div class="bar">
+			<a href="addCustomer.html" class="iconButton">
+				<span class="addIcon">&nbsp;</span>添加
+			</a>
+			<div class="buttonWrap">
+				<a href="#" id="deleteButton" onclick="submits()" class="iconButton disabled">
+					<span class="deleteIcon">&nbsp;</span>删除
+				</a>
+				<a href="javascript:;" id="refreshButton" class="iconButton">
+					<span class="refreshIcon">&nbsp;</span>刷新
+				</a>
+				
+				<a href="javascript:;" id="moreButton" class="button">更多选项</a>
+				<div class="menuWrap">
+					<a href="javascript:;" id="pageSizeSelect" class="button">
+						每页显示<span class="arrow">&nbsp;</span>
+					</a>
+					<div class="popupMenu">
+						<ul id="pageSizeOption">
+							<li>
+								<a href="javascript:;" val="10">10</a>
+							</li>
+							<li>
+								<a href="javascript:;" class="current" val="20">20</a>
+							</li>
+							<li>
+								<a href="javascript:;" val="50">50</a>
+							</li>
+							<li>
+								<a href="javascript:;" val="100">100</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="menuWrap">
+				<div class="search">
+					<span id="searchPropertySelect" class="arrow">&nbsp;</span>
+					<input type="text" id="searchValue" name="searchValue" value="" maxlength="200" />
+					<button type="submit">&nbsp;</button>
+				</div>
+				<div class="popupMenu">
+					<ul id="searchPropertyOption">
+						<li>
+							<a href="javascript:;" val="name">类型名称</a>
+						</li>
+						<li>
+							<a href="javascript:;" val="sn">类型编号</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+<table id="listTable" class="list">
+			<tr>
+				<th class="check">
+					<input type="checkbox" id="selectAll" />
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="sn">用户名</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="name">会员等级</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="productCategory">E-mail</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="price">创建日期</a>
+				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="price">状态</a>
+				</th>
+				<th>
+					<span>操作</span>
+				</th>
+			</tr>
+				<tr>
+					<td>
+						<input type="checkbox"  name="ids" value="<%=arr.get(i).getCid() %>" />
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+						aaa
+					</td>
+					<td>
+					"正常":"禁用" 
+					</td>
+					
+					
+					<td>
+						<a href="EditCustomer.html?cid=1">[编辑]</a>
+					</td>
+				</tr>
+		</table>
+<input type="hidden" id="pageSize" name="pageSize" value="20" />
+<input type="hidden" id="searchProperty" name="searchProperty" value="" />
+<input type="hidden" id="orderProperty" name="orderProperty" value="" />
+<input type="hidden" id="orderDirection" name="orderDirection" value="" />
+	<div class="pagination">
+			<a class="firstPage" href="list_customer.html?pageNumber=1">&nbsp;</a>
+			<a class="previousPage" href="list_customer.html?pageNumber=">&nbsp;</a>
+				<a class="currentPage">1</a>
+				<a  href="list_customer.jsp?pageNumber=2">2</a>
+				<a href="list_customer.jsp?pageNumber=3">3</a>
+				<span class="pageBreak">...</span>
+			<a class="nextPage" href="list_customer.html?pageNumber=">&nbsp;</a>
+			<a class="lastPage" href="list_customer.html?pageNumber=">&nbsp;</a>
+		<span class="pageSkip">
+			共--</>页 到第<input id="pageNumber" name="pageNumber" value="1" maxlength="9" onpaste="return false;" />页<button type="submit">&nbsp;</button>
+		</span>
+	</div>
+	</form>
+</body>
+</html>

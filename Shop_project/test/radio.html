@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <style>
+        .radio{
+            color: #005aa0;
+        }
+        input[type='radio']{
+            display: none;
+        }
+        .span{
+            width: 50px;
+            height: 25px;
+            background-color: #92b3ce;
+            display: block;
+            float: left;
+            margin: 20px;
+            color: white;
+        }
+        input[name='nan']:checked+span{
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<script>
+    $(function (){
+        $('input[name="nan"]').each(function (){
+                var type=$('input[name="nan"]:checked').val();
+                alert(type);
+        });
+    });
+</script>
+<label for="1">
+    <input type="radio" id="1" value="1" name="nan" checked>
+    <span class="span"><p>男</p></span>
+
+</label>
+<label for="2">
+    <input type="radio" id="2" value="2" name="nan" >
+    <span class="span"><p>女</p></span>
+
+</label>
+</body>
+</html>

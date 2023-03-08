@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>企业信息管理系统_用户登录</title>
+<style type="text/css">
+<!--
+body {
+	margin: 0;
+	background-color: #016aa9;
+	overflow:hidden;
+}
+.STYLE1 {
+	color: #000000;
+	font-size: 12px;
+}
+.td_name{
+  position: fixed;
+  left: 680px;
+}
+.captcha{
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 10px;
+    margin-bottom: 190px;
+}
+-->
+</style>
+  <script src="../JS/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+
+	function Captcha(){
+      document.getElementById('image').src='../Services/CaptchaGD.php?r='+Math.random();
+    }
+    //jquery
+    $(function (){
+        $("#submit").click(function (){
+            $.ajax({
+                type:"post",
+                url:"../Services/loginServices.php",
+                data:{"username":$("#username").val(),"userpwd":$("#userpwd").val(),"captcha":$("#captcha").val()},
+                dataType:"text",
+                success:function (result){
+                    if ($("#username").val()=="" || $("#userpwd").val()==""){
+                        alert('账号或密码不能为空');
+                        window.location.href='login.html';
+                    }
+                    if (result=="success"){
+                        alert('登录成功');
+                        window.location.href='main.php';
+                    }else if (result=="error"){
+                        alert('账号或密码错误');
+                        window.location.href='login.html';
+                    }else if (result=="cap_error"){
+                        alert('验证码错误');
+                        window.location.href='login.html';
+                    }
+                },
+                error:function (){
+                    alert('错误');
+                }
+            });
+        });
+    });
+
+</script>
+</head>
+
+<body >
+<form action="../Services/loginServices.php" method="post" id="myform">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table  width="962" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="230" background="../images/login_03.gif">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="53"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="394" height="53" background="../images/login_05.gif">&nbsp;</td>
+            <td width="206"  background="../images/login_06.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+<!--                账号-->
+                <td width="16%" height="25"><div align="right"><span class="STYLE1" >用&nbsp;&nbsp;&nbsp;户</span></div></td>
+                <td width="57%" height="25"><div align="center">
+                  <input type="text" id="username" style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                </div></td>
+                <td width="27%" height="25">&nbsp;</td>
+              </tr>
+              <tr>
+<!--                密码-->
+                <td height="25"><div align="right"><span class="STYLE1">密&nbsp;&nbsp;&nbsp;码</span></div></td>
+                <td height="25"><div align="center">
+                  <input type="password" id="userpwd" style="width:105px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                </div></td>
+                <td height="25"><div align="left"><a id="submit" href="javascript:void(0) "><img src="../images/dl.gif" width="49" height="18" border="0"></a></div></td>
+              </tr>
+            </table></td>
+            <td width="362" background="../images/login_07.gif">&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+
+      <tr>
+        <td height="213" background="../images/login_08.gif"><!--        验证码-->
+            <div class="captcha"><span>验证码</span>
+                <input type="text" id="captcha" style="width:60px; height:17px; background-color:#292929; border:solid 1px #7dbad7; font-size:12px; color:#6cd0ff">
+                <img id="image" src="../Services/CaptchaGD.php" width="80" height="17" onclick="Captcha()">
+            </div>
+
+          </td>
+
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

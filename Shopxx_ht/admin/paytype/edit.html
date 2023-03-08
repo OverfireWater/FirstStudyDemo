@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>编辑</title>
+<meta name="author" content="hht" />
+<meta name="copyright" content="hht" />
+<link href="../../resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/jquery.lSelect.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/common.js"></script>
+<script type="text/javascript" src="../../resources/admin/js/input.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	var $areaId = $("#areaId");
+	
+	
+	// 地区选择
+	$areaId.lSelect({
+		url: "/admin/common/area.jhtml"
+	});
+	
+	// 表单验证
+	$inputForm.validate({
+		rules: {
+			name: "required",
+			contact: "required",
+			areaId: "required",
+			address: "required"
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+
+
+<!-- Copyright � 2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+	<div class="path">
+		<a href="http://demo.shopxx.net/admin/common/index.jhtml">首页</a> &raquo; 编辑
+	</div>
+	<form id="inputForm" action="" method="post">
+		<input type="hidden" name="id" value="1" />
+		<table class="input">
+			<tr>
+				<th>
+					<span class="requiredField">*</span>名称:
+				</th>
+				<td>
+					<input type="text" name="name" class="text" value="北京发货中心" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>联系人:
+				</th>
+				<td>
+					<input type="text" name="contact" class="text" value="李小明" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>地区:
+				</th>
+				<td>
+					<span class="fieldSet">
+						<input type="hidden" id="areaId" name="areaId" value="2" treePath=",1," />
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span class="requiredField">*</span>地址:
+				</th>
+				<td >
+					<input type="text" name="address" class="text" value="新建安天坛东路888号" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					邮编:
+				</th>
+				<td >
+					<input type="text" name="zipCode" class="text" value="100062" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					电话:
+				</th>
+				<td>
+					<input type="text" name="phone" class="text" value="010-88888888" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					手机:
+				</th>
+				<td>
+					<input type="text" name="mobile" class="text" value="13888888888" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					是否默认:
+				</th>
+				<td>
+					<input type="checkbox" name="isDefault" checked="checked" />
+					<input type="hidden" name="_isDefault" value="false" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					备注
+				</th>
+				<td>
+					<input type="text" name="memo" class="text" value="" maxlength="200" />
+				</td>
+			</tr>
+			<tr>
+				<th>&nbsp;
+					
+				</th>
+				<td>
+					<input type="submit" class="button" value="确&nbsp;&nbsp;定" />
+					<input type="button" class="button" value="返&nbsp;&nbsp;回" onclick="window.history.back();" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

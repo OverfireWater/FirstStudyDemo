@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg{
+            background-color: #00F7DE;
+            border: 0px;
+        }
+        #div{
+            width: 200px;
+            height: 200px;
+            background-color: grey;
+        }
+
+        .bor{
+            border: 1px saddlebrown solid;
+        }
+        table{
+            align-content: center;
+            width: 600px;
+            border: 1px solid;
+        }
+       th,td{
+            border: 1px solid;
+           height: 40px;
+        }
+    </style>
+    <script src="JS/jquery-1.8.3.min.js"></script>
+    <script>
+        $(function (){
+        //    所有的js代码在这个里面写
+        //     $(".btn").click(
+        //         function (){
+        //             /*
+        //             * JQuery的基本选择器和CSS相识
+        //             *   ID选择器#
+        //             *   class选择器.
+        //             *   标签选择器
+        //             *   *表示所有的元素
+        //             * */
+        //             // alert($("#txt").val());
+        //             //attr 表示追加属性
+        //             // $("#txt").attr("class","bg").attr("value","jquery添加的文字");
+        //             // $("div").attr("id","div");
+        //             //通配符
+        //             // $("*").attr("class","bor");
+        //             //div里面所有的span后代元素
+        //             // $("div span").css("background-color","red");
+        //             //div 的子元素
+        //             // $("div>span").css("background-color","red");
+        //             //和div相邻的span标签
+        //             // $("div+span").css("background-color","red");
+        //             //表示所有的span标签到那时不包含ID叫做sp的span标签
+        //             $("span:not('#sp')").css("background-color","yellow");
+        //         });
+            $("#search").keyup(function (){
+                 var $txt=$("#search").val();
+                $("table tr:not('#head')").hide().filter(":contains("+$txt+")").show();
+            });
+
+        });
+    </script>
+</head>
+<body>
+<input type="button" class="btn" id="btn" value="按钮">
+<input type="text" id="txt">
+<div>
+    <span>第一个span</span>
+    <p>段落标签</p>
+    <span id="sp">
+        这是外部的span
+    </span>
+    <br>
+    <div><span style="background-color: grey">这是内部的span</span></div>
+
+</div>
+<span style="background-color: grey">这是内部的span</span>
+<span style="background-color: grey">这是内部的span</span>
+
+<input type="text" id="search" />
+<table cellspacing="0">
+    <tr id="head">
+        <th>姓名</th>
+        <th>性别</th>
+        <th>电话</th>
+        <th>住址</th>
+        <th>邮箱</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>男</td>
+        <td>15012345678</td>
+        <td>重庆</td>
+        <td>zhangsan@sina.com</td>
+        <td>无</td>
+    </tr>
+    <tr>
+        <td>李四</td>
+        <td>男</td>
+        <td>15012345678</td>
+        <td>重庆</td>
+        <td>zhangsan@sina.com</td>
+        <td>无</td>
+    </tr>
+    <tr>
+        <td>熊玉龙</td>
+        <td>男</td>
+        <td>15012345678</td>
+        <td>重庆</td>
+        <td>zhangsan@sina.com</td>
+        <td>无</td>
+    </tr>
+    <tr>
+        <td>苏茂</td>
+        <td>男</td>
+        <td>15012345678</td>
+        <td>重庆</td>
+        <td>zhangsan@sina.com</td>
+        <td>无</td>
+    </tr>
+    <tr>
+        <td>易磊</td>
+        <td>男</td>
+        <td>15012345678</td>
+        <td>重庆</td>
+        <td>zhangsan@sina.com</td>
+        <td>无</td>
+    </tr>
+    <tr>
+        <td>刘鑫</td>
+        <td>男</td>
+        <td>15012345678</td>
+        <td>重庆</td>
+        <td>zhangsan@sina.com</td>
+        <td>无</td>
+    </tr>
+</table>
+
+
+</body>
+</html>

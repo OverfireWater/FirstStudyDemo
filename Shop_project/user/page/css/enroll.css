@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: 550;
+}
+.background-enroll{
+    background-image: url("../img/ernoll1.jpg");
+
+    width: 1200px;
+    height: 750px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+    background-repeat:no-repeat;
+    border-radius: 20px;
+}
+.login-center{
+    position: relative;
+    width: 400px;
+    top: 130px;
+    margin-left: 400px;
+    border-radius: 20px;
+    background: rgba(200,200,200,0.9);
+}
+.login-border-center{
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.login-user{
+    margin: 20px 0;
+}
+.login-user input{
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    padding-left: 15px;
+    border: 2px solid rgba(0,0,0,0);
+    background-color: rgba(255,255,255,0.9);
+    outline:none;
+    border-radius: 20px;
+}
+.login-but{
+    width: 160px;
+    height: 45px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    background: orangered;
+    cursor: pointer;
+}
+/*	注册*/
+.login-enroll{
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.input:focus{
+    border: 2px solid red;
+    transition: all 0.5s;
+}

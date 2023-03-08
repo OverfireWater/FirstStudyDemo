@@ -1,0 +1,84 @@
+<tr name='display'>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<input type='checkbox' name='checkbox2' value='checkbox' />
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center' class='STYLE1'>
+			<div align='center'>01</div>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>图片</span>
+		</div>
+	</td>
+	<td bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>张三</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>18</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>男</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>1</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>1236547890</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>科技园</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>本科</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF'>
+		<div align='center'>
+			<span class='STYLE1'>备注</span>
+		</div>
+	</td>
+	<td height='20' bgcolor='#FFFFFF' >
+		<div align='center'>
+			<span class='STYLE4' >
+				<img src='tab/images/edt.gif' width='16' height='16' />编辑&nbsp; &nbsp;
+				<img src='tab/images/del.gif' width='16' height='16' />删除
+			</span>
+		</div>
+	</td>
+</tr>
+
+
+
+
+<tr>
+	<td height="20" bgcolor="#FFFFFF">
+		<div align="center">
+              			<input type="checkbox" name="checkbox2" value="checkbox" />
+            		</div>
+	</td>
+            	<td height="20" bgcolor="#FFFFFF">
+		<div align="center" class="STYLE1">
+              			<div align="center">01</div>
+           		 </div>	
+	</td>
+           		 <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">13538758475</span></div></td>
+            		<td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">大专</span></div></td>
+            		<td height="20" bgcolor="#FFFFFF" ><div align="center"><span class="STYLE4" ><img src="tab/images/edt.gif" width="16" height="16" />编辑&nbsp; &nbsp;<img src="tab/images/del.gif" width="16" height="16" />删除</span></div></td>
+</tr>

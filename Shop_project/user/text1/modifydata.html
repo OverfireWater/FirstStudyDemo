@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>中友-个人中心</title>
+<link type="text/css" rel="stylesheet" href="css/head.css">
+<link type="text/css" rel="stylesheet" href="css/percenter.css">
+<link type="text/css" rel="stylesheet" href="css/button动效.css">
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="header_1">
+				<img src="image/首页_fill.png"> <a href="#">&nbsp;&nbsp;首页</a> <input
+					id="shurukuang" type="text">
+				<div class=sousuo>
+					<a style="color: white;" href="#">&nbsp;搜索</a>
+				</div>
+				<ul id="login">
+					<li id="login_1"><a href="#">注册</a></li>
+					<li id="login_2"><a href="#">登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main">
+			<div class="sideframe">
+				<div class="perhead">
+					<img class="per_img" src="image/猫鱼眼.jpg">
+					<div class="per_name" align="center">中友</div>
+					<div class="per_site" align="center">广职院</div>
+				</div>
+				<a href="address.html"><button class="sd_button">收货地址</button></a>
+				<a href="../page/shopCart.php"><button class="sd_button">我的购物车</button></a>
+				<a href=""><button class="sd_button">我的收藏</button></a>
+				<a href="modifydata.html"><button class="sd_button">修改资料</button></a>
+			</div>
+			<div class="show">
+<div class="show_box" style="width:310px;height:270px;margin-top:110px;margin-left:300px">
+<form action="modifydata.html" method="post" id="per_data"></form>
+<table class="order_table">
+   <tr>
+    <td width="80" align="right">个人头像：</td>
+    <td>
+      <label >
+       <input form="per_data" type="file" style="display:none;"/>
+       <span>点击修改</span>
+      </label>
+    </td>
+   </tr>
+   <tr>
+    <td width="80" align="right">昵称：</td>
+    <td><input form="per_data" type="text" value="匡中友"/></td>
+   </tr>
+   <tr>
+    <td width="80" align="right">手机号码：</td>
+    <td><input form="per_data" type="text"  value="12312345678" readonly/></td>
+    </tr><!--账号唯一不可修改 -->
+   <tr>
+    <td width="80" align="right">电子邮箱：</td>
+    <td><input form="per_data" type="text"  value="12345678@qq.com"/></td>
+   </tr>
+      <tr>
+    <td width="80" align="right">密码：</td>
+    <td><input form="per_data" type="password"  value="123456"/></td>
+   </tr>
+      <tr>
+    <td width="80" align="right">输入地址：</td>
+    <td><input form="per_data" type="text"  value="广职院"/></td>
+   </tr>
+   <tr>
+    <td width="80" align="right"></td>
+    <td>
+    <input form="per_data" type="submit" 
+    style="background-color:#2C3F89;width:100px;color:white;border:0px #2C3F89 solid;font-size:20px;" value="保存更改"/>
+    </td>
+   </tr>
+  </table>
+		</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

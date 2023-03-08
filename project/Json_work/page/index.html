@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax-搜索</title>
+    <style>
+        table{
+            width: 600px;
+        }
+        td,th{
+            border: 1px solid;
+        }
+        #txt {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script src="../JS/jquery-1.8.3.min.js"></script>
+    <script>
+        $(function (){
+            $("#txt").keyup(function (){
+                $.ajax({
+                    type:"get",
+                    async:true,
+                    url:"../Service/AjaxServices.php",
+                    data:{"book_name":$("#txt").val()},
+                    dataType:"json",
+                    success:function (data){
+                        $.each(data.result,function (index,obj){
+                            $("#tr").append("<tr><td>"+obj['Book_id']+"</td><td>"+obj['Book_name']+"</td><td>"+obj['Book_Author']+"</td>" +
+                                "<td>"+obj['Book_Date']+"</td><td>"+obj['Book_intro']+"</td><td>"+obj['remark']+"</td><td>"+obj['Book_img']+"</td></tr>");
+                        });
+                    },
+                    error:function (){
+                        alert('没有搜索到数据');
+                    }
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+<center>
+    <label>
+        <input type="text" id="txt">
+    </label>
+<table cellspacing="0" id="tab">
+    <tr id="tr">
+        <th>编号</th>
+        <th>名称</th>
+        <th>作者</th>
+        <th>时间</th>
+        <th>简介</th>
+        <th>备注</th>
+        <th>图书封面路径</th>
+    </tr>
+</table>
+</center>
+</body>
+</html>
